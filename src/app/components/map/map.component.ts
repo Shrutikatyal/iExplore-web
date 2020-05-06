@@ -13,33 +13,38 @@ import { MapService } from 'src/app/services/map.service';
 
 export class MapComponent implements OnInit {
   private map;
+  private markerLayer:L.Marker[];
   
   @Input() public markers: UserData[]; // Markers to overlay on Map
   @Input() public center: { latitude: number, longitude: number };
 
-  constructor(private mapService:MapService) { }
+
+  constructor(private mapService:MapService) { this.markerLayer = new Array();}
 
   ngOnInit(): void {
-    // this.__initializeMap();
-    // this.__renderMap();
+    //this.__initializeMap();
+    //this.__renderMap();
     // this.__showMarkers();
   }
 
   ngOnChanges(changes: { [property: string]: SimpleChange }){
     // Extract changes to the input property by its name
     
-    if(changes['markers']) 
-      //If the markers' position changes
-      this.__showMarkers();
-
+    //If the center changes
     if(changes['center']){
-      //If the center changes
       if(this.map == null){
         this.__initializeMap();
         this.__renderMap();
       }
       this.map.flyTo([+this.center.latitude, +this.center.longitude], 22)
     }
+
+    //If the markers' position changes
+    if(changes['markers']) {
+      this.deleteMarkers();
+      this.__showMarkers();
+    }
+
  }
 
   private __initializeMap(){
@@ -84,6 +89,7 @@ export class MapComponent implements OnInit {
           // okay to add the icon
           m = L.marker([x, y]).addTo(this.map);
           m.bindPopup("User "+`${id}`);
+          this.markerLayer.push(m);
         }
         else
         {
@@ -92,5 +98,11 @@ export class MapComponent implements OnInit {
         }
       }
     }
+  }
+
+  //Delete existing markers
+  protected deleteMarkers(){
+    for(let i=0; i<this.markerLayer.length; i++)
+      this.map.removeLayer(this.markerLayer[i]);
   }
 }

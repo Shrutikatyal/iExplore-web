@@ -17,7 +17,7 @@ export class AppComponent {
 
   constructor(private mapService:MapService,@Inject(INIT_COORDS) public center: {latitude: number, longitude: number} ){
     this.markers = [
-      //{ id:'1', latitude: '28.5754', longitude: '77.2425' }
+      { id:'1', latitude: '28.5754', longitude: '77.2425' }
     ];
     this.fetchCenter();
   }
