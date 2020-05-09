@@ -61,7 +61,7 @@ To import this project into Visual Code Studio, proceed as follows:
   <summary><b>Rendering Maps</b></summary>
       <br />  
     There are many options available for rendering maps to web applications but most of them are <b>Proprietary Libraries</b>. Examples of such libraries are Google, Esri and Here which ship custom mapping libraries that allow easy usage of their services in your application. However, we wanted an open library for this work and thus chose <b>Leaflet.js</b>. <br/><br/>
-    Leaflet is a <b>light</b> and <b>simple</b> mapping library that is relatively easy to use. The library is licensed under BSD-2-Clause and is available on npm. Leaflet has a strong plugin ecosystem which provides strong additional feature sets which can help make Leaflet as functional as other mapping libraries. Thus making a great fit of our solution.
+    Leaflet is a <b>light</b> and <b>simple</b> mapping library that is relatively easy to use. The library is licensed under BSD-2-Clause and is available on npm. Leaflet has a strong plugin ecosystem which provides strong additional feature sets which can help make Leaflet as functional as other mapping libraries. Thus making a great fit for our solution.
 <br />
 <br />
 </details> 
