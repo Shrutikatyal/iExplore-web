@@ -1,0 +1,17 @@
+<form class="form" [@slideInOut]>
+  <mat-form-field appearance="none" class="full-width">
+    <input type="text"
+          placeholder=" Search"
+          aria-label="Search"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto" (keydown.enter)="onKeyPress($event)">
+    <mat-icon matSuffix class="icon">search</mat-icon>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option" >
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+  

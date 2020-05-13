@@ -3,7 +3,7 @@ import * as L from 'leaflet';
 import "leaflet/dist/images/marker-shadow.png";
 import { UserData } from 'src/app/models/UserData';
 import { MapService } from 'src/app/services/map.service';
-
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-map',
@@ -13,13 +13,17 @@ import { MapService } from 'src/app/services/map.service';
 
 export class MapComponent implements OnInit {
   private map;
-  private markerLayer:L.Marker[];
+  private markerLayer:{marker:L.Marker, id:string}[];
   
+
+
   @Input() public markers: UserData[]; // Markers to overlay on Map
   @Input() public center: { latitude: number, longitude: number };
+  @Input() public userId : string;
 
-
-  constructor(private mapService:MapService) { this.markerLayer = new Array();}
+  constructor(private mapService:MapService) { 
+    this.markerLayer = new Array(); 
+  }
 
   ngOnInit(): void {
     //this.__initializeMap();
@@ -40,18 +44,23 @@ export class MapComponent implements OnInit {
     }
 
     //If the markers' position changes
-    if(changes['markers']) {
+    if(changes['markers'] && !this.sameAsPrev()) {
       this.deleteMarkers();
       this.__showMarkers();
     }
+
+    if(changes['userId'] && this.userId!=null && this.userId !== undefined && this.userId !== '')
+      this.openPopUp()
 
  }
 
   private __initializeMap(){
     this.map = L.map('map', {
       center: [ this.center.latitude, this.center.longitude ],
+      zoomControl: false,
       zoom: 22
     });
+    L.control.zoom( { position:'bottomright' } ).addTo(this.map);
   }
 
   private __renderMap(){
@@ -74,22 +83,23 @@ export class MapComponent implements OnInit {
     if (this.markers !== undefined && this.markers != null && this.markers.length > 0)
     {
       const n: number = this.markers.length;
-      let i: number, id: string;
+      let i: number;
       let m: L.Marker;
   
       let x: number;
       let y: number;
   
       for (i = 0; i < n; ++i) {
-        id = this.markers[i].id;
         x = +this.markers[i].latitude;
         y = +this.markers[i].longitude;
         if (x !== undefined && !isNaN(x) && y !== undefined && !isNaN(y))
         {
           // okay to add the icon
           m = L.marker([x, y]).addTo(this.map);
-          m.bindPopup("User "+`${id}`);
-          this.markerLayer.push(m);
+          m.bindPopup(`${this.markers[i].name}`);
+          this.markerLayer.push({marker:m,id:this.markers[i].id});
+          if(this.markers[i].id == this.userId)
+            m.openPopup();
         }
         else
         {
@@ -100,9 +110,32 @@ export class MapComponent implements OnInit {
     }
   }
 
+  private openPopUp(){
+    console.log(this.userId)
+      for(let i=0; i < this.markerLayer.length; i++)
+        if(this.markerLayer[i].id == this.userId){
+          console.log('match')
+          this.markerLayer[i].marker.openPopup();}
+  }
+
   //Delete existing markers
   protected deleteMarkers(){
     for(let i=0; i<this.markerLayer.length; i++)
-      this.map.removeLayer(this.markerLayer[i]);
+      this.map.removeLayer(this.markerLayer[i].marker);
+    this.markerLayer = [];
   }
+
+  private sameAsPrev():boolean{
+    if(this.markers.length != this.markerLayer.length)
+      return false;
+    
+    for(let i=0;i<this.markerLayer.length;i++){
+      let loc = this.markerLayer[i].marker.getLatLng();
+      if(loc.lat != this.markers[i].latitude || loc.lng != this.markers[i].longitude)
+        return false; 
+    }
+    
+    return true;
+  }
+  
 }

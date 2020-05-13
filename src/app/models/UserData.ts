@@ -1,7 +1,8 @@
 export class UserData {
     
     id:string;
-    latitude:string;
-    longitude:string;
+    latitude:number;
+    longitude:number;
+    name:string;
 
 }

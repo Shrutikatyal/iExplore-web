@@ -1,0 +1,78 @@
+#title,h2{
+    background-color: #080e12;
+    color: white;
+    padding: 24px;
+    padding-bottom: 10px;
+    margin: none !important;
+    margin-block-end: none !important;
+}
+
+#name{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#lat{
+    width: 40%;
+    margin-right: 10%;
+}
+
+#long{
+    width: 40%;
+}
+
+.form{
+    margin:24px;
+}
+
+.actions{
+    margin-left: 18%;;
+}
+
+#center{
+    font: 400 16px/28px Roboto, "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-size: 16px;
+    line-height: 28px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+}
+
+#closeBtn{
+    margin-right: 30%;
+}
+
+#saveBtn:disabled{
+    background-color: #484a4c;
+    color: whitesmoke;
+}
+
+#saveBtn{
+    background-color: #080e12;
+    color: white;
+}
+
+/* input color class */
+/* ::ng-deep input.mat-input-element {
+    color: #484a4c;
+  } */
+  
+/* Change label color on focused */
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #236ddb !important;
+}
+
+/* underline border color on focused */
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+    background-color: #236ddb !important;
+}
+
+::ng-deep .mat-input-element {
+    caret-color: #236ddb!important;
+}

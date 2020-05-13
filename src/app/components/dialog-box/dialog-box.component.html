@@ -1,0 +1,32 @@
+<h2 mat-dialog-title id="title">Add Building</h2>
+
+<mat-dialog-content [formGroup]="form" class = "form">
+  
+    <mat-form-field id="name">
+        <input matInput placeholder="Building Name" formControlName="name">
+        <mat-error *ngIf="hasError('lat', 'required')">Name is required</mat-error>
+    </mat-form-field>
+    
+    <br>
+    <span id="center"> Center co-ordinates</span> 
+    <br>
+    <mat-form-field id="lat">
+        <input matInput placeholder="Latitude" formControlName="lat" >
+        <mat-error *ngIf="hasError('lat', 'required')">Latitude is required</mat-error>
+        <mat-error *ngIf="hasError('lat', 'pattern')">Incorrect latitude value</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field id="long">
+        <input matInput placeholder="Longitude" formControlName="long">
+        <mat-error *ngIf="hasError('long', 'required')">Longitude is required</mat-error>
+        <mat-error *ngIf="hasError('long', 'pattern')">Incorrect longitude value</mat-error>
+    </mat-form-field>
+
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions class="actions">
+    <button class="mat-raised-button" (click)="close()" id="closeBtn">Close</button>
+    <button class="mat-raised-button" (click)="save()" [disabled]="!form.valid" id="saveBtn">Save</button>
+</mat-dialog-actions>

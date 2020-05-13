@@ -1,0 +1,56 @@
+.form {
+    /* min-width: 150px;
+    width: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  position: relative;
+  z-index: 1001;
+  padding-top: 5px;
+}
+  
+.full-width {
+    width: 500px;
+    padding-left: 12px;
+}
+
+input{
+    height: 16px;
+    color: white;
+}
+
+.full-width.mat-form-field{
+    background-color: #080e12;
+    border: 1px white solid;
+    color: white;
+    border-radius: 10px;
+}
+
+::ng-deep .mat-form-field-infix{
+    border-top: none;
+}
+::ng-deep .mat-form-field-wrapper{
+    margin-bottom: -1.25em;
+}
+
+::ng-deep .mat-input-underline {
+    display: none;
+}
+
+::ng-deep .mat-input-element::placeholder{
+    color: white;
+}
+
+::ng-deep .mat-input-element {
+    caret-color: white!important;
+}
+
+::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+    caret-color: white!important;
+}
+
+.icon{
+    border-top: 0.1rem solid transparent;
+}

@@ -1,0 +1,43 @@
+<div class="container" [class.is-mobile]="mobileQuery.matches">
+    <mat-toolbar class="toolbar" *ngIf="toolbarVisible">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <h1 class="app-name">iExplore</h1>
+      <span class="fill-space"></span>
+
+  
+      <mat-icon> location_on </mat-icon>
+      <h1 class="loc-name">{{ buildingName }}</h1>
+      
+    </mat-toolbar>
+
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+         [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"
+         [class.is-nav-fixed-width] = "!mobileQuery.matches" class="nav" opened>
+
+        <mat-card class="profile-card">
+          <mat-card-header>
+            <div mat-card-avatar class="header-image"></div>
+            <mat-card-title>John Doe</mat-card-title>
+            <mat-card-subtitle class="designation">Manager</mat-card-subtitle>
+          </mat-card-header> 
+        </mat-card>
+
+        <mat-nav-list class="nav-list">
+          <button mat-list-item routerLink="." *ngFor="let nav of fillerNav" (click)="onClick($event, nav.id)">  
+            <mat-icon class="nav-list-icon">{{ nav.icon }}</mat-icon> {{ nav.content }} 
+          </button>
+        </mat-nav-list>
+      
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+        <app-search-box *ngIf="searchBoxVisible" (closeSearchBox)='closeSearch($event)' [options] = 'options'>
+        </app-search-box>
+        <app-map-container [buildingId] = "buildingId" [userId] = "userId"></app-map-container>
+      </mat-sidenav-content>
+
+    </mat-sidenav-container>
+</div>
+  
