@@ -108,6 +108,21 @@ To import this project into Visual Code Studio, proceed as follows:
 <br /><br />
 </details>
 
+## Screenshots
+<details>
+  <summary>Click to view</summary>
+  <br />
+  <p align="center">
+    <img src="https://i.postimg.cc/yN0fSxpY/add-Building.png" width="350" />
+    <img src="https://i.postimg.cc/90LgFk8d/building-Result.png" width="350" />
+    <img src="https://i.postimg.cc/3xsSRmBc/building-Search.png" width="350" />
+    <img src="https://i.postimg.cc/VkrZmDjt/home.png" width="350" />
+    <img src="https://i.postimg.cc/gcsTDwzx/login.png" width="350" />
+    <img src="https://i.postimg.cc/ncLwwHr0/search.png" width="350" />
+    <img src="https://i.postimg.cc/rFYZBvtc/search-Result.png" width="350" />
+  </p>
+</details>
+
 ## References
 - https://www.youtube.com/watch?v=Fdf5aTYRW0E
 - https://blog.fullstacktraining.com/display-real-time-data-in-angular/
