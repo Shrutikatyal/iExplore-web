@@ -38,10 +38,10 @@ To import this project into Visual Code Studio, proceed as follows:
 - [x] Getting building center from the server.
 - [x] Getting location updates when application is running in foreground.
 - [x] Updating UI as and when location updates are done.
-- [ ] Changing building view.
-- [ ] Searching for a particular user.
-- [ ] Adding new buildings.
-- [ ] UI Design.
+- [x] Changing building view.
+- [x] Searching for a particular user.
+- [x] Adding new buildings.
+- [x] UI Design.
 
 ### Development Decisions
 *(Click to expand)*
