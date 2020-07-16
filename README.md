@@ -113,8 +113,8 @@ To import this project into Visual Code Studio, proceed as follows:
   <summary>Click to view</summary>
   <br />
   <p align="center">
-    <img src="https://i.postimg.cc/yN0fSxpY/add-Building.png" width="350" />
-    <img src="https://i.postimg.cc/90LgFk8d/building-Result.png" width="350" />
+    <img src="https://i.postimg.cc/yN0fSxpY/add-Building.png"/>
+    <img src="https://i.postimg.cc/90LgFk8d/building-Result.png"/>
     <img src="https://i.postimg.cc/3xsSRmBc/building-Search.png" width="350" />
     <img src="https://i.postimg.cc/VkrZmDjt/home.png" width="350" />
     <img src="https://i.postimg.cc/gcsTDwzx/login.png" width="350" />
